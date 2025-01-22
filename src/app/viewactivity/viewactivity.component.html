@@ -1,0 +1,40 @@
+<h3 style="padding: 10px">All Activity</h3>
+
+<div class="text-primary" *ngIf="activities.length === 0">
+  {{ message }}
+</div>
+<table
+  *ngIf="activities.length > 0"
+  class="table table-striped"
+  style="text-align: center"
+>
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th>Duration</th>
+      <th>Calories Burned</th>
+      <th>Steps</th>
+      <th>Distance</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of activities">
+      <td>{{ d.activityName }}</td>
+      <td>{{ d.duration }}</td>
+      <td>{{ d.calories }}</td>
+      <td>{{ d.steps }}</td>
+      <td>{{ d.distance }}</td>
+      <td>{{ d.date | date }}</td>
+      <td>
+        <button class="btn btn-outline-primary m-1" (click)="updateActivity(d)">
+          Update
+        </button>
+        <button class="btn btn-outline-danger" (click)="deleteActivity(d._id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
